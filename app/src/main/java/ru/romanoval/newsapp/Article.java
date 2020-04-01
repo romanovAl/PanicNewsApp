@@ -53,7 +53,7 @@ public class Article {
     }
 
     public String getTitle() {
-        return title;
+        return title + ". И всё, пиздец!";
     }
 
     public void setTitle(String title) {

@@ -20,7 +20,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     private boolean isLoadingAdded;
 
-    private List<Article> list;
+    private ArrayList<Article> list = new ArrayList<>();
 
     private RecyclerViewAdapterCallback mCallback;
 
@@ -81,7 +81,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             return ITEM;
     }
 
-    public void addAll(List<Article> list){
+    public void addAll(ArrayList<Article> list){
 
         for (Article article: list) {
             this.list.add(article);
@@ -124,7 +124,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         this.isLoadingAdded = isLoadingAdded;
     }
 
-    public List<Article> getList(){
+    public ArrayList<Article> getList(){
         return list;
     }
 

@@ -13,7 +13,7 @@ public class ResponseItem {
     private Integer totalResults;
     @SerializedName("articles")
     @Expose
-    private List<Article> articles;
+    private ArrayList<Article> articles;
 
     public Integer getTotalResults() {
         return totalResults;
@@ -23,11 +23,11 @@ public class ResponseItem {
         this.totalResults = totalResults;
     }
 
-    public List<Article> getArticles() {
+    public ArrayList<Article> getArticles() {
         return articles;
     }
 
-    public void setArticles(List<Article> articles) {
+    public void setArticles(ArrayList<Article> articles) {
         this.articles = articles;
     }
 

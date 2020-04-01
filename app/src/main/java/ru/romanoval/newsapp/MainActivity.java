@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
 
                 System.err.println("Что-то получили");
 
-                List<Article> articles = response.body().getArticles();
+                ArrayList<Article> articles = response.body().getArticles();
 
                 adapter.addAll(articles);
                 adapter.addLoadingFooter();
