@@ -29,7 +29,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="ria.ru"
-            android:text="@{article.source}"/>
+            android:text="@{article.source.name}"/>
 
         <TextView
             android:id="@+id/textViewAuthor"
@@ -56,9 +56,7 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewSubtitle"
-            tools:srcCompat="@tools:sample/avatars"
-            app:url = "@{article.urlToImage}"
-            app:errorImage="@{@drawable/error_avatar}"/>
+            app:url = "@{article.urlToImage}" />
 
         <View
             android:id="@+id/viewLine"

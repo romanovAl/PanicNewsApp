@@ -3,6 +3,7 @@ package ru.romanoval.newsapp;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ResponseItem {
@@ -12,7 +13,7 @@ public class ResponseItem {
     private Integer totalResults;
     @SerializedName("articles")
     @Expose
-    private List<Article> articles = null;
+    private List<Article> articles;
 
     public Integer getTotalResults() {
         return totalResults;

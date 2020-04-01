@@ -100,12 +100,12 @@ public class Article {
         this.content = content;
     }
 
-    @BindingAdapter({"url", "errorImage"})
-    public static void loadImage(ImageView view, String url, Drawable errorDrawable) {
+    @BindingAdapter({"url"})
+    public static void loadImage(ImageView view, String url) {
         Picasso
                 .get()
                 .load(url)
-                .error(errorDrawable)
+                //.error(errorDrawable)
                 .into(view);
     }
 
