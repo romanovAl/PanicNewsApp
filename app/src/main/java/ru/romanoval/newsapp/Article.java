@@ -1,7 +1,13 @@
 package ru.romanoval.newsapp;
 
+import android.graphics.drawable.Drawable;
+import android.widget.ImageView;
+
+import androidx.databinding.BindingAdapter;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.squareup.picasso.Picasso;
 
 public class Article {
 
@@ -92,6 +98,15 @@ public class Article {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    @BindingAdapter({"url", "errorImage"})
+    public static void loadImage(ImageView view, String url, Drawable errorDrawable) {
+        Picasso
+                .get()
+                .load(url)
+                .error(errorDrawable)
+                .into(view);
     }
 
 }

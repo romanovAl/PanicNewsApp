@@ -4,6 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import retrofit2.Call;
+import retrofit2.http.GET;
+import retrofit2.http.Query;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -13,4 +17,11 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+    private interface GetDataService{
+        @GET("/everything")
+        Call<ResponseItem> getResponseItem(@Query("q") String q, @Query("page") int pageNum);
+    }
+
 }
+
