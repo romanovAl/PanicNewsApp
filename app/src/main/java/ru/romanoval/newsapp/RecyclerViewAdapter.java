@@ -139,6 +139,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
         void bind(Article article) {
             binding.setArticle(article);
+            binding.constraint.setOnClickListener(v -> mCallback.openNews(article.getUrl()));
 
             binding.executePendingBindings();
         }
@@ -152,7 +153,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     }
 
     public interface RecyclerViewAdapterCallback {
-        void openFullUserInformation(String login);
+        void openNews(String url);
+        long getScreenWith();
     }
 
 }
