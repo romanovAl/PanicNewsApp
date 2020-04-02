@@ -53,7 +53,7 @@ public class Article {
     }
 
     public String getTitle() {
-        return title + ". И всё, пиздец!";
+        return getRandomEndAndStart(title);
     }
 
     public void setTitle(String title) {
@@ -108,5 +108,37 @@ public class Article {
                 //.error(errorDrawable)
                 .into(view);
     }
+
+    private String getRandomEndAndStart(String conc){
+
+        String[] ends = {
+                ". И всё, пиздец!",
+                ". Так сказал Путин, блять!",
+                ". Что будет дальше, хуй его знает…",
+                ". В Кремле уже решают этот вопрос.",
+                ". Пу взял вопрос на карандашик.",
+                ". А Ванга говорила, блять...   "
+        };
+
+        String[] starts = {
+                "Началось... ",
+                "Сбылось древнее предсказание Ванги: ",
+                "Новость прямо из преисподни: ",
+                "Путин был в ярости, когда узнал: ",
+                "Путин проболтался: ",
+                "Ученые оцепенели, когда узнали... ",
+
+        };
+
+        double endOrStar = Math.random();
+
+        if(endOrStar <= 0.5){
+            return starts[(int)(Math.random()) * starts.length] + conc;
+        }else{
+            return conc + ends[(int)(Math.random() * ends.length)];
+        }
+
+    }
+
 
 }
