@@ -4,8 +4,10 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -141,6 +143,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             binding.setArticle(article);
             binding.constraint.setOnClickListener(v -> mCallback.openNews(article.getUrl()));
 
+//           ConstraintLayout constraintLayout = binding.constraint;
+           binding.imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+
             binding.executePendingBindings();
         }
     }
@@ -154,7 +159,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     public interface RecyclerViewAdapterCallback {
         void openNews(String url);
-        long getScreenWith();
+        int[] getScreenWidth();
     }
 
 }
