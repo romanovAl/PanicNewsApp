@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
     }
 
     private void loadFirstPage(){
-        Call<ResponseItem> call = service.getResponseItem("Путин",1,"fc0602937a6748c7af5987eaf7dfd530");
+        Call<ResponseItem> call = service.getResponseItem("Путин",1,"publishedAt","fc0602937a6748c7af5987eaf7dfd530");
 
         call.enqueue(new Callback<ResponseItem>() {
             @Override
@@ -103,6 +103,8 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
                 ArrayList<Article> articles = response.body().getArticles();
 
                 totalPageCount = response.body().getTotalResults();
+
+                currentPageCount = articles.size();
 
                 adapter.addAll(articles);
 
@@ -122,7 +124,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
 
     private void loadNextPage(){
 
-        Call<ResponseItem> call = service.getResponseItem("Путин",currentPageNumber,"fc0602937a6748c7af5987eaf7dfd530");
+        Call<ResponseItem> call = service.getResponseItem("Путин",currentPageNumber,"publishedAt","fc0602937a6748c7af5987eaf7dfd530");
 
         call.enqueue(new Callback<ResponseItem>() {
             @Override
@@ -159,7 +161,10 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
 
     private interface GetDataService{
         @GET("everything")
-        Call<ResponseItem> getResponseItem(@Query("q") String q, @Query("page") int page, @Query("apiKey") String apiKey);
+        Call<ResponseItem> getResponseItem(@Query("q") String q,
+                                           @Query("page") int page,
+                                           @Query("sortBy") String sortBy,
+                                           @Query("apiKey") String apiKey);
     }
 
     @BindingAdapter({"url"})
