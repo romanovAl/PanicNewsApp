@@ -105,7 +105,8 @@ public class Article {
         Picasso
                 .get()
                 .load(url)
-                //.error(errorDrawable)
+                .resize(1200, 800)
+                .centerCrop()
                 .into(view);
     }
 
