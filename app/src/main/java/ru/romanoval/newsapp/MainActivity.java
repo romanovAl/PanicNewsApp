@@ -1,6 +1,7 @@
 package ru.romanoval.newsapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.BindingAdapter;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,7 +12,10 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.Display;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -38,10 +42,19 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
 
     private int currentPageCount;
 
+    private static int width, height;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Display display = getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+
+        width = size.x;
+        height = size.y;
 
         service = RetrofitInstance.getRetrofitInstance().create(GetDataService.class);
 
@@ -144,18 +157,18 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
         startActivity(browserIntent);
     }
 
-    @Override
-    public int[] getScreenWidth() {
-
-        Display display = getWindowManager().getDefaultDisplay();
-        Point size = new Point();
-        display.getSize(size);
-
-        return new int[]{size.x, size.y};
-    }
-
     private interface GetDataService{
         @GET("everything")
         Call<ResponseItem> getResponseItem(@Query("q") String q, @Query("page") int page, @Query("apiKey") String apiKey);
+    }
+
+    @BindingAdapter({"url"})
+    public static void loadImage(ImageView view, String url) {
+        Picasso
+                .get()
+                .load(url)
+                .resize(width, view.getHeight())
+                .centerCrop()
+                .into(view);
     }
 }

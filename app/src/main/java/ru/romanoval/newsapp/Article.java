@@ -100,16 +100,6 @@ public class Article {
         this.content = content;
     }
 
-    @BindingAdapter({"url"})
-    public static void loadImage(ImageView view, String url) {
-        Picasso
-                .get()
-                .load(url)
-                .resize(1200, 800)
-                .centerCrop()
-                .into(view);
-    }
-
     private String getRandomEndAndStart(String conc){
 
         String[] ends = {

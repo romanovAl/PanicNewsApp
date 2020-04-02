@@ -143,9 +143,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             binding.setArticle(article);
             binding.constraint.setOnClickListener(v -> mCallback.openNews(article.getUrl()));
 
-//           ConstraintLayout constraintLayout = binding.constraint;
-           binding.imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-
             binding.executePendingBindings();
         }
     }
@@ -159,7 +156,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     public interface RecyclerViewAdapterCallback {
         void openNews(String url);
-        int[] getScreenWidth();
     }
 
 }
